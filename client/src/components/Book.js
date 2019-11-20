@@ -26,6 +26,8 @@ export class Book extends Component {
                                         <h1 className="card-title"> Title: {book.title}</h1>
                                         <h2 className="card-title">Author: {book.author}</h2>
                                         <p className="card-text">Description: {book.description}</p>
+                                        <h4 className="card-text lg-col"> <em>Likes:</em> <strong>{book.likes}</strong></h4>
+                                        
                                         <LikeContainer book={book} />
                                     </div>
                                 </div>

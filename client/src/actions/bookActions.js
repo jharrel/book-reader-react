@@ -1,3 +1,8 @@
+const removeBook = id => ({
+    type: 'DELETE_BOOK',
+    id,
+  });
+
 export const fetchBooks = () => {
     return (dispatch) => {
         dispatch({type: 'LOADING_BOOKS'})
@@ -56,23 +61,35 @@ export const updateLikes = (book, actionType) => {
     }
 }
 
-export const deleteBooks = (book, history) => {
-   
-    const deleteBook = {
-       method: 'DELETE',
-       headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-       }
-    }
+export const updateBooks = (book, actionType) => {
     return (dispatch) => {
-        dispatch({type: "DELETE_BOOKS"})
-        fetch(`http:localhost:3001/books/${book.id}`, deleteBook)
-           .then(resp => resp.json())
-           .then(() => {
-              dispatch({type: "DELETE_BOOKS", book: book})
-              history.push('/books')
-           })
-     }
-  }
-  
+        return fetch(`http://localhost:3001/books/${book.id}`, {
+            method: 'UPDATE',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                'likes': book.likes
+            })
+        })
+            .then(response => {
+                return response.json()
+            })
+            .then(book => {
+                dispatch({type: actionType, book})
+            })
+    }
+}
+
+export const deleteBook = id => dispatch => fetch(`localhost:3001/books/${id}`, {
+    method: 'DELETE',
+  })
+    .then((response) => {
+      if (response.ok) {
+        dispatch(removeBook(id));
+      } else {
+        window.alert('Unable to delete');
+      }
+    })
+    .catch(error => console.log(error));
