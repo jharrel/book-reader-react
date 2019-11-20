@@ -10,10 +10,9 @@ class NewBookForm extends Component {
         this.state = {
             title: '',
             author: '',
-            read: '',
             image: '',
             likes: '',
-            content: ''
+            description: ''
 
         }
     }
@@ -37,12 +36,16 @@ class NewBookForm extends Component {
             <div className="wrapper">
                 <form className='book-form' onSubmit={this.handleSubmit}>
                     <div className='input-fields'>
+
                         <input type="text" className="input" name="title" id="title" placeholder="Book Title" value={this.state.title} onChange={this.handleChange} />
+
                         <input type="text" className="input" name="author" id="author" placeholder="Author" value={this.state.author} onChange={this.handleChange} />
-                        <input type="text" className="input" name="content" id="content" placeholder="Tell us more about this book" value={this.state.temperament} onChange={this.handleChange} />
-                        <input type="textarea" className="input" name="content" id="content" rows="5"></input>
-                        <input type="text" className="input" name="image" id="image" placeholder="Book Image" value={this.state.image} onChange={this.handleChange} />
+
+                        <input type="text" className="input" name="description" id="description" placeholder="Description" value={this.state.description} onChange={this.handleChange} />
+
+                        <input type="text" className="input" name="image" id="image" placeholder="Image of Book" value={this.state.image} onChange={this.handleChange} />
                     </div>
+
                     <input type="submit" value="Create Book" className="submit-btn" />
                 </form>
             </div>
@@ -51,7 +54,7 @@ class NewBookForm extends Component {
 
             
             
-        )
+        );
     }
 }
 

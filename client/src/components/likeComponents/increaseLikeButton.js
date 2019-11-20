@@ -7,8 +7,5 @@ const IncreaseLikeButton = (props) => {
             <button className='btn btn-primary btn-lg btn-block' onClick={props.handleIncrement}> Increase Likes</button>
         </div>
     )
-
 }
-    
-    
 export default IncreaseLikeButton   

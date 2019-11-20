@@ -55,3 +55,24 @@ export const updateLikes = (book, actionType) => {
             })
     }
 }
+
+export const deleteBooks = (book, history) => {
+   
+    const deleteBook = {
+       method: 'DELETE',
+       headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+       }
+    }
+    return (dispatch) => {
+        dispatch({type: "DELETE_BOOKS"})
+        fetch(`http:localhost:3001/books/${book.id}`, deleteBook)
+           .then(resp => resp.json())
+           .then(() => {
+              dispatch({type: "DELETE_BOOKS", book: book})
+              history.push('/books')
+           })
+     }
+  }
+  

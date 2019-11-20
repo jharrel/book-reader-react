@@ -16,7 +16,7 @@ class App extends Component {
  
   
   componentDidMount() {
-    console.log(this.props)
+    // console.log(this.props)
     //this.props.greeting();
     this.props.fetchBooks()
   }
