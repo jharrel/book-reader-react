@@ -2,6 +2,11 @@ import React, {Component} from 'react'
 import Book from './Book'
 
 class Books extends Component {
+    handleDelete = itemId => {
+        const items = this.state.items.filter(item => item.id !== itemId);
+        this.setState({ items: items });
+      };
+      
     render() {
         const booksList= this.props.books.map( book => {
             return (
