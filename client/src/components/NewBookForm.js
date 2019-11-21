@@ -25,10 +25,12 @@ class NewBookForm extends Component {
 
     handleSubmit = event => {
         event.preventDefault()
+        console.log('a')
         this.props.addNewBook( {
             ...this.state,
             likes: 0
         }, this.props.history )
+        console.log('b')
     }
 
     render() {

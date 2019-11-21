@@ -20,6 +20,7 @@ export const fetchBooks = () => {
 }
 
 export const addNewBook = ( book, history ) => {
+    console.log('c')
     return dispatch => {
         return fetch('http://localhost:3001/books', {
             method: 'POST',
@@ -31,6 +32,7 @@ export const addNewBook = ( book, history ) => {
         })
         .then(response => response.json())
         .then(book => {
+            console.log('d')
             dispatch({ type: 'ADD_NEW_BOOK', book })
             //making sure my promise is resolved before redirect
             history.push('/books')
