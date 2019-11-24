@@ -1,5 +1,6 @@
 const bookReducer = (state = { books: [],loading: false }, action) => {
     switch(action.type){
+        
         case 'LOADING_BOOKS':
             return {
                 ...state,
@@ -9,6 +10,7 @@ const bookReducer = (state = { books: [],loading: false }, action) => {
         case 'ADD_BOOKS':
             return {
                 ...state,
+                //action.books is our array of books
                 books: action.books,
                 loading: false 
             } 
@@ -18,6 +20,7 @@ const bookReducer = (state = { books: [],loading: false }, action) => {
                 ...state,
                 books: [...state.books, action.book]
             }
+
         case 'INCREASE_LIKES':
 
             return{

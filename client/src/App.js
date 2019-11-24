@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import './App.css';
 import { fetchBooks } from './actions/bookActions';
+// 1. we are importing fetchBooks from bookActions
 import BooksContainer from "./containers/BooksContainer"
 import NewBookForm from "./components/NewBookForm"
 
@@ -12,6 +13,7 @@ import Home from "./components/layout/Home"
 import Errors from "./components/layout/Errors"
 
 import '../node_modules/bootstrap/dist/css/bootstrap.css.map'
+
 class App extends Component {
  
   
@@ -19,6 +21,7 @@ class App extends Component {
     // console.log(this.props)
     //this.props.greeting();
     this.props.fetchBooks()
+    //4. And then on load we calling this.props.fetchBooks
   }
 
 
@@ -39,17 +42,17 @@ class App extends Component {
       </div>
       </Router>
       
-      )
+      );
   }
 }
-
-
 
 const mapDispatchToProps = dispatch => {
   return {
     fetchBooks: () => dispatch(fetchBooks()),
+    // 2. The key fetchbooks is pointing to a function that is dispactching fetchbooks.
     greeting: () => console.log('hello world')
   }
 }
 
 export default connect(null, mapDispatchToProps)(App)
+//3. Then we are PASSING mapDispatchToProps to connect. That is going to give us this.props.fetchbooks
