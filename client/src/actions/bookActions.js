@@ -1,11 +1,9 @@
-//1. We have a function of fetchbooks, which is returning the function that takes in dispatch as a parameter.
 export const fetchBooks = () => {
     return (dispatch) => {
         dispatch({type: 'LOADING_BOOKS'})
         return fetch('http://localhost:3001/books')
-        //response is going to be a promise that is going to be resolved to us
             .then(response => {
-                return response.json()
+                return response.json() //the array of books 
                 //json stand for JavaScript Object Notation
             })
             // .then(responseJSON => {

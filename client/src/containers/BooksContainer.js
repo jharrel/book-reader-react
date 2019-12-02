@@ -9,21 +9,20 @@ class BooksContainer extends Component {
     render(){
         return(
             <div>
-            {/* {this.props.greeting} */}
+            {/* rendering books components and passing down this.props.books */}
+            {/* prop (books=) */}
             <Books books={this.props.books} />
             </div>
         )
     }
 
 }
-
-const mapStateToProps = state => {
+const mapStateToProps = booksReducer => {
     return {
-        books: state.books,
-        //greeting: "Hello World"
+        //key of books 
+        books: booksReducer.books,
     }
 }
-
 
 
 export default connect(mapStateToProps)(BooksContainer)

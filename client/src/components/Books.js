@@ -15,7 +15,8 @@ class Books extends Component {
             sortBy: "likes"
         })
     }
-   
+
+
     booksList = (books) => books.map( book => {
         return (
             <Book key={book.id} book={book} />    
@@ -28,6 +29,7 @@ class Books extends Component {
     }
 
     renderBooks = () => {
+        
         if (this.state.sortBy === "") {
             return this.booksList(this.props.books)
         } else {
@@ -41,6 +43,7 @@ class Books extends Component {
             <div>
 
           <button value={ this.state.likes } onClick={this.handleClick}> Sort By Likes </button>
+                {/* anytime with curly brackets we are CALLING CALLING CALLING THIS function */}
                 { this.renderBooks() }  
             </div>
         )
